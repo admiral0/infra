@@ -1,0 +1,9 @@
+---
+# Tasks for vpn
+
+#- name: example
+#  action: example
+#  notify:
+#    - restart service
+#  tags:
+#    - example

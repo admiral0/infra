@@ -1,0 +1,12 @@
+---
+# master playbook
+
+- hosts: all
+  user: root
+  gather_facts: True
+
+  roles:
+    - base
+    - mailserver
+    - webmail
+    - wireguard
