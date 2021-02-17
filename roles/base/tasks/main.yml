@@ -7,3 +7,40 @@
 #    - restart service
 #  tags:
 #    - example
+
+- name: Update apt cache
+  apt: update_cache=yes
+  tags:
+    - dependencies
+
+- name: Upgrade packages
+  apt: upgrade=safe
+  tags:
+    - dependencies
+
+- name: Install common packages
+  apt:
+    state: present
+    pkg:
+      - htop
+      - iftop
+      - iotop
+      - screen
+      - sudo
+      - unattended-upgrades
+      - vim
+      - zsh
+  tags:
+    - dependencies
+
+- name: Ensure locale en_US.UTF-8 locale is present
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
+
+- import_tasks: users.yml
+  tags: users
+- import_tasks: ntp.yml
+  tags: ntp
+- import_tasks: nginx.yml
+  tags: nginx

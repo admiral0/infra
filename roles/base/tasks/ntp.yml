@@ -1,0 +1,8 @@
+---
+- name: Install ntp
+  apt: pkg=ntp state=present
+  tags:
+    - dependencies
+
+- name: Ensure ntpd is running
+  service: name=ntp state=started enabled=yes

@@ -1,13 +1,13 @@
 ---
-# file: group_vars/all
+# file: staging.yaml
 
 # General setup
-domain: (required)
-main_user_name: (required)
+domain: admiral0.it
+main_user_name: me
 
 # Secondary spam domain
 # this is for virtual users
-secondary_domain: ""
+secondary_domain: realfakemails.com
 
 # Ansible stuff
 ansible_python_interpreter: /usr/bin/python3

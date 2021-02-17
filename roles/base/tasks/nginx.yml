@@ -1,0 +1,40 @@
+---
+- name: Install dependencies
+  apt:
+    state: present
+    pkg:
+      - apt-transport-https
+      - python3-certbot
+      - python3-certbot-nginx
+      - gnupg2
+      - ca-certificates
+      - lsb-release
+  tags:
+    - nginx
+
+- name: Add an apt key by id from a keyserver
+  apt_key:
+    url: https://nginx.org/keys/nginx_signing.key
+    state: present
+  tags:
+    - nginx
+
+- name: Add nginx repository
+  apt_repository:
+    repo: deb http://nginx.org/packages/debian buster nginx
+    state: present
+  tags:
+    - nginx
+
+- name: Update apt cache
+  apt: update_cache=yes
+  tags:
+    - nginx
+
+- name: Install dependencies
+  apt:
+    state: present
+    pkg:
+      - nginx
+  tags:
+    - nginx
